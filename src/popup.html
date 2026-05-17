@@ -19,6 +19,34 @@
           <span class="slider round"></span>
         </label>
       </div>
+      <section class="readability" id="readability-section" hidden>
+        <h2 data-i18n="readability_title">このページの読みやすさ</h2>
+        <div class="readability-bar" aria-hidden="true">
+          <div class="readability-bar-fill" id="readability-fill"></div>
+        </div>
+        <div class="readability-meta">
+          <span class="readability-score" id="readability-score">--</span>
+          <span class="readability-level" id="readability-level"></span>
+        </div>
+        <button
+          type="button"
+          class="readability-toggle"
+          id="readability-details-toggle"
+          aria-expanded="false"
+          aria-controls="readability-details"
+          hidden
+          data-i18n="readability_details_open">詳細</button>
+        <dl class="readability-details" id="readability-details" hidden>
+          <dt data-i18n="readability_details_kanji">漢字の割合</dt>
+          <dd id="readability-kanji">--</dd>
+          <dt data-i18n="readability_details_avg_len">平均文長</dt>
+          <dd id="readability-avg-len">--</dd>
+          <dt data-i18n="readability_details_long_ratio">長文の比率</dt>
+          <dd id="readability-long-ratio">--</dd>
+        </dl>
+        <p class="readability-premium-hint" id="readability-premium-hint" hidden
+           data-i18n="readability_premium_hint">詳細はPremiumで確認できます。</p>
+      </section>
     </main>
     <footer>
       <button id="open-settings" data-i18n="popup_settings">設定</button>

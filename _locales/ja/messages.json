@@ -34,5 +34,35 @@
   },
   "options_saved_success": {
     "message": "設定を保存しました"
+  },
+  "readability_title": {
+    "message": "このページの読みやすさ"
+  },
+  "readability_easy": {
+    "message": "読みやすい"
+  },
+  "readability_normal": {
+    "message": "ふつう"
+  },
+  "readability_hard": {
+    "message": "むずかしい"
+  },
+  "readability_unavailable": {
+    "message": "計測できません"
+  },
+  "readability_details_open": {
+    "message": "詳細"
+  },
+  "readability_details_kanji": {
+    "message": "漢字の割合"
+  },
+  "readability_details_avg_len": {
+    "message": "平均文長"
+  },
+  "readability_details_long_ratio": {
+    "message": "長文の比率"
+  },
+  "readability_premium_hint": {
+    "message": "詳細はPremiumで確認できます。"
   }
 }

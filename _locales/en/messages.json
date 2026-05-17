@@ -34,5 +34,35 @@
   },
   "options_saved_success": {
     "message": "Settings saved"
+  },
+  "readability_title": {
+    "message": "Page readability"
+  },
+  "readability_easy": {
+    "message": "Easy"
+  },
+  "readability_normal": {
+    "message": "Average"
+  },
+  "readability_hard": {
+    "message": "Hard"
+  },
+  "readability_unavailable": {
+    "message": "Unable to measure"
+  },
+  "readability_details_open": {
+    "message": "Details"
+  },
+  "readability_details_kanji": {
+    "message": "Kanji ratio"
+  },
+  "readability_details_avg_len": {
+    "message": "Avg. sentence length"
+  },
+  "readability_details_long_ratio": {
+    "message": "Long-sentence ratio"
+  },
+  "readability_premium_hint": {
+    "message": "Details available in Premium."
   }
 }

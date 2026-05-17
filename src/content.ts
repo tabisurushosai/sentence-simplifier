@@ -2,6 +2,7 @@ import { storage } from './storage';
 import { addFurigana, containsKanji } from './furigana';
 import { simplifyText, hasSimplifiableWord } from './simplifier';
 import { splitLongSentence, needsSplit } from './splitter';
+import { calcReadability } from './readability';
 
 let observer: MutationObserver | null = null;
 let furiganaActive = false;
@@ -171,6 +172,15 @@ async function init() {
     stopObserving();
   }
 }
+
+chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  if (message?.type === 'getReadability') {
+    const text = document.body?.innerText ?? '';
+    sendResponse(calcReadability(text));
+    return true;
+  }
+  return false;
+});
 
 chrome.storage.onChanged.addListener((changes) => {
   if (

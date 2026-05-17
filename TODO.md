@@ -30,7 +30,7 @@
 - [x] T023: long-split — 実装
 - [x] T024: long-split — テスト・整合
 - [x] T025: readability-score — 設計
-- [ ] T026: readability-score — 実装
+- [x] T026: readability-score — 実装
 - [ ] T027: readability-score — テスト・整合
 - [ ] T028: toggle — 設計
 - [ ] T029: toggle — 実装
