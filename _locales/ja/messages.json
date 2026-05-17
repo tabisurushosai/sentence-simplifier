@@ -91,5 +91,38 @@
   },
   "premium_locked_hint": {
     "message": "体験期間が終了しました。Premiumで詳細統計をご利用いただけます。"
+  },
+  "premium_section_title": {
+    "message": "Premium"
+  },
+  "premium_status_loading": {
+    "message": "読み込み中..."
+  },
+  "premium_status_premium": {
+    "message": "Premium 有効"
+  },
+  "premium_status_trial": {
+    "message": "無料体験中 (あと$DAYS$日)",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "premium_status_free": {
+    "message": "無料版"
+  },
+  "premium_license_label": {
+    "message": "ライセンスコード"
+  },
+  "premium_redeem": {
+    "message": "引き換える"
+  },
+  "premium_redeem_success": {
+    "message": "Premium を有効化しました"
+  },
+  "premium_redeem_invalid": {
+    "message": "ライセンスコードが正しくありません"
   }
 }

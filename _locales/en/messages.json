@@ -91,5 +91,38 @@
   },
   "premium_locked_hint": {
     "message": "Your trial has ended. Premium unlocks the detailed stats."
+  },
+  "premium_section_title": {
+    "message": "Premium"
+  },
+  "premium_status_loading": {
+    "message": "Loading..."
+  },
+  "premium_status_premium": {
+    "message": "Premium active"
+  },
+  "premium_status_trial": {
+    "message": "Free trial ($DAYS$ day(s) left)",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "premium_status_free": {
+    "message": "Free"
+  },
+  "premium_license_label": {
+    "message": "License code"
+  },
+  "premium_redeem": {
+    "message": "Redeem"
+  },
+  "premium_redeem_success": {
+    "message": "Premium activated"
+  },
+  "premium_redeem_invalid": {
+    "message": "Invalid license code"
   }
 }

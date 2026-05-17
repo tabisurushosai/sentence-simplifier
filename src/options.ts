@@ -1,8 +1,24 @@
 import { applyI18n, t } from './i18n';
 import { storage } from './storage';
+import { getPremiumStatus } from './premium';
+import { redeemLicenseCode } from './upgrade';
+
+async function renderPremiumStatus() {
+  const el = document.getElementById('premium-current-status');
+  if (!el) return;
+  const status = await getPremiumStatus();
+  if (status.isPremium) {
+    el.textContent = t('premium_status_premium') || 'Premium 有効';
+  } else if (status.isTrial) {
+    el.textContent =
+      t('premium_status_trial', [String(status.trialDaysRemaining)]) ||
+      `Trial: ${status.trialDaysRemaining}日`;
+  } else {
+    el.textContent = t('premium_status_free') || '無料版';
+  }
+}
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // Apply internationalization
   applyI18n();
 
   const furiganaToggle = document.getElementById('feature-furigana') as HTMLInputElement;
@@ -12,7 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const saveButton = document.getElementById('save') as HTMLButtonElement;
   const status = document.getElementById('status') as HTMLDivElement;
 
-  // Load saved settings
   const settings = await storage.get([
     'furiganaEnabled',
     'kanjiReplaceEnabled',
@@ -25,7 +40,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   splitToggle.checked = settings.longSplitEnabled;
   scoreToggle.checked = settings.readabilityScoreEnabled;
 
-  // Save settings
   saveButton.addEventListener('click', async () => {
     await storage.set({
       furiganaEnabled: furiganaToggle.checked,
@@ -34,10 +48,34 @@ document.addEventListener('DOMContentLoaded', async () => {
       readabilityScoreEnabled: scoreToggle.checked,
     });
 
-    // Update status to let user know options were saved.
     status.textContent = t('options_saved_success');
     setTimeout(() => {
       status.textContent = '';
     }, 750);
   });
+
+  await renderPremiumStatus();
+
+  const upgradeBtn = document.getElementById('upgrade-cta');
+  if (upgradeBtn) {
+    upgradeBtn.addEventListener('click', () => {
+      chrome.runtime.sendMessage({ type: 'openUpgrade' });
+    });
+  }
+
+  const licenseInput = document.getElementById('license-input') as HTMLInputElement | null;
+  const redeemButton = document.getElementById('redeem-button');
+  const redeemStatus = document.getElementById('redeem-status');
+  if (redeemButton && licenseInput) {
+    redeemButton.addEventListener('click', async () => {
+      const code = licenseInput.value;
+      const ok = await redeemLicenseCode(code);
+      if (redeemStatus) {
+        redeemStatus.textContent = ok
+          ? t('premium_redeem_success') || 'Premium 有効化しました'
+          : t('premium_redeem_invalid') || 'ライセンスコードが正しくありません';
+      }
+      if (ok) await renderPremiumStatus();
+    });
+  }
 });
