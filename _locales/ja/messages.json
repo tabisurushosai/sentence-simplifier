@@ -1,0 +1,23 @@
+{
+  "appName": {
+    "message": "やさしい文章"
+  },
+  "appDesc": {
+    "message": "難しい日本語をふりがな付きの簡単な表現に変換します。"
+  },
+  "popup_title": {
+    "message": "やさしい文章"
+  },
+  "popup_toggle_label": {
+    "message": "有効にする"
+  },
+  "popup_settings": {
+    "message": "設定"
+  },
+  "options_title": {
+    "message": "やさしい文章 - 設定"
+  },
+  "options_save": {
+    "message": "保存"
+  }
+}
