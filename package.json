@@ -1,0 +1,26 @@
+{
+  "name": "sentence-simplifier",
+  "version": "1.0.0",
+  "description": "難しい日本語→ふりがな付き簡単表現 (熟語変換、長文分割)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext .ts",
+    "package": "npm run build && cd dist && zip -r ../release/sentence-simplifier.zip ."
+  },
+  "keywords": [
+    "chrome-extension",
+    "accessibility",
+    "japanese",
+    "furigana"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.268",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
+  }
+}
