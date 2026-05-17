@@ -3,6 +3,7 @@ import { addFurigana, containsKanji } from './furigana';
 import { simplifyText, hasSimplifiableWord } from './simplifier';
 import { splitLongSentence, needsSplit } from './splitter';
 import { calcReadability } from './readability';
+import { computeActiveFlags } from './toggle';
 
 let observer: MutationObserver | null = null;
 let furiganaActive = false;
@@ -167,13 +168,13 @@ async function init() {
     'disabledHosts',
   ]);
 
-  const host = location.hostname;
-  const siteDisabled = Array.isArray(disabledHosts) && disabledHosts.includes(host);
-  const masterOn = !!enabled && !siteDisabled;
-
-  furiganaActive = masterOn && !!furiganaEnabled;
-  kanjiReplaceActive = masterOn && !!kanjiReplaceEnabled;
-  longSplitActive = masterOn && !!longSplitEnabled;
+  const flags = computeActiveFlags(
+    { enabled, furiganaEnabled, kanjiReplaceEnabled, longSplitEnabled, disabledHosts },
+    location.hostname
+  );
+  furiganaActive = flags.furiganaActive;
+  kanjiReplaceActive = flags.kanjiReplaceActive;
+  longSplitActive = flags.longSplitActive;
 
   if (furiganaActive || kanjiReplaceActive || longSplitActive) {
     walk(document.body);

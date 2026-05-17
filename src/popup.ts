@@ -1,5 +1,6 @@
 import { applyI18n, t } from './i18n';
 import { storage } from './storage';
+import { addHostToDisabled, removeHostFromDisabled } from './toggle';
 import type { ReadabilityResult, ReadabilityLevel } from './readability';
 
 const LEVEL_I18N: Record<ReadabilityLevel, string> = {
@@ -154,16 +155,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (toggleSiteDisabled && host) {
     toggleSiteDisabled.addEventListener('change', async () => {
       const current = await storage.get(['disabledHosts']);
-      const list: string[] = Array.isArray(current.disabledHosts)
-        ? [...current.disabledHosts]
-        : [];
-      const idx = list.indexOf(host);
-      if (toggleSiteDisabled.checked) {
-        if (idx === -1) list.push(host);
-      } else {
-        if (idx !== -1) list.splice(idx, 1);
-      }
-      await storage.set({ disabledHosts: list });
+      const next = toggleSiteDisabled.checked
+        ? addHostToDisabled(current.disabledHosts, host)
+        : removeHostFromDisabled(current.disabledHosts, host);
+      await storage.set({ disabledHosts: next });
     });
   }
 
