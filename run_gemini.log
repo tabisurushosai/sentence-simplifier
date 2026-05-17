@@ -156,3 +156,158 @@ YOLO mode is enabled. All tool calls will be automatically approved.
 Ripgrep is not available. Falling back to GrepTool.
 Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5895ms...
 Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5258ms...
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5829ms...
+Completed T019: Created design document for kanji-replace and updated TODO.md.
+[2026-05-17 23:25:31] [sentence-simplifier Loop 20] 残 16 タスク (yolo)...
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5327ms...
+Attempt 2 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 11508ms...
+Error when talking to Gemini API Full report available at: /var/folders/6c/r5_hcs5n34n_t464tkqbqs200000gn/T/gemini-client-error-Turn.run-sendMessageStream-2026-05-17T14-25-56-023Z.json TerminalQuotaError: You have exhausted your capacity on this model. Your quota will reset after 23h27m48s.
+    at classifyGoogleError (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270063:18)
+    at retryWithBackoff (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270707:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293631:28)
+    at async GeminiChat.streamWithRetries (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293450:29)
+    at async Turn.run (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:294024:24)
+    at async GeminiClient.processTurn (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306709:22)
+    at async GeminiClient.sendMessageStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306797:14)
+    at async file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:10859:26
+    at async main (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:16137:5) {
+  cause: {
+    code: 429,
+    message: 'You have exhausted your capacity on this model. Your quota will reset after 23h27m48s.',
+    details: [ [Object], [Object] ]
+  },
+  retryDelayMs: 84468020.216737,
+  reason: 'QUOTA_EXHAUSTED'
+}
+An unexpected critical error occurred:[object Object]
+[2026-05-17 23:25:56] [sentence-simplifier] Gemini エラー (RC=1)、3分待機...
+[2026-05-17 23:28:56] [sentence-simplifier Loop 21] 残 16 タスク (yolo)...
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5030ms...
+Error when talking to Gemini API Full report available at: /var/folders/6c/r5_hcs5n34n_t464tkqbqs200000gn/T/gemini-client-error-Turn.run-sendMessageStream-2026-05-17T14-29-07-470Z.json TerminalQuotaError: You have exhausted your capacity on this model. Your quota will reset after 23h24m36s.
+    at classifyGoogleError (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270063:18)
+    at retryWithBackoff (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270707:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293631:28)
+    at async GeminiChat.streamWithRetries (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293450:29)
+    at async Turn.run (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:294024:24)
+    at async GeminiClient.processTurn (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306709:22)
+    at async GeminiClient.sendMessageStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306797:14)
+    at async file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:10859:26
+    at async main (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:16137:5) {
+  cause: {
+    code: 429,
+    message: 'You have exhausted your capacity on this model. Your quota will reset after 23h24m36s.',
+    details: [ [Object], [Object] ]
+  },
+  retryDelayMs: 84276569.598332,
+  reason: 'QUOTA_EXHAUSTED'
+}
+An unexpected critical error occurred:[object Object]
+[2026-05-17 23:29:07] [sentence-simplifier] Gemini エラー (RC=1)、3分待機...
+[2026-05-17 23:32:07] [sentence-simplifier Loop 22] 残 16 タスク (yolo)...
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+Error when talking to Gemini API Full report available at: /var/folders/6c/r5_hcs5n34n_t464tkqbqs200000gn/T/gemini-client-error-Turn.run-sendMessageStream-2026-05-17T14-32-14-335Z.json TerminalQuotaError: You have exhausted your capacity on this model. Your quota will reset after 23h21m29s.
+    at classifyGoogleError (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270063:18)
+    at retryWithBackoff (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270707:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293631:28)
+    at async GeminiChat.streamWithRetries (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293450:29)
+    at async Turn.run (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:294024:24)
+    at async GeminiClient.processTurn (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306709:22)
+    at async GeminiClient.sendMessageStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306797:14)
+    at async file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:10859:26
+    at async main (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:16137:5) {
+  cause: {
+    code: 429,
+    message: 'You have exhausted your capacity on this model. Your quota will reset after 23h21m29s.',
+    details: [ [Object], [Object] ]
+  },
+  retryDelayMs: 84089720.681837,
+  reason: 'QUOTA_EXHAUSTED'
+}
+An unexpected critical error occurred:[object Object]
+[2026-05-17 23:32:14] [sentence-simplifier] Gemini エラー (RC=1)、3分待機...
+[2026-05-17 23:35:14] [sentence-simplifier Loop 23] 残 16 タスク (yolo)...
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+Error when talking to Gemini API Full report available at: /var/folders/6c/r5_hcs5n34n_t464tkqbqs200000gn/T/gemini-client-error-Turn.run-sendMessageStream-2026-05-17T14-35-21-120Z.json TerminalQuotaError: You have exhausted your capacity on this model. Your quota will reset after 23h18m22s.
+    at classifyGoogleError (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270063:18)
+    at retryWithBackoff (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270707:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293631:28)
+    at async GeminiChat.streamWithRetries (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293450:29)
+    at async Turn.run (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:294024:24)
+    at async GeminiClient.processTurn (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306709:22)
+    at async GeminiClient.sendMessageStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306797:14)
+    at async file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:10859:26
+    at async main (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:16137:5) {
+  cause: {
+    code: 429,
+    message: 'You have exhausted your capacity on this model. Your quota will reset after 23h18m22s.',
+    details: [ [Object], [Object] ]
+  },
+  retryDelayMs: 83902920.67007199,
+  reason: 'QUOTA_EXHAUSTED'
+}
+An unexpected critical error occurred:[object Object]
+[2026-05-17 23:35:21] [sentence-simplifier] Gemini エラー (RC=1)、3分待機...
+[2026-05-17 23:38:21] [sentence-simplifier Loop 24] 残 16 タスク (yolo)...
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+Error when talking to Gemini API Full report available at: /var/folders/6c/r5_hcs5n34n_t464tkqbqs200000gn/T/gemini-client-error-Turn.run-sendMessageStream-2026-05-17T14-38-27-678Z.json TerminalQuotaError: You have exhausted your capacity on this model. Your quota will reset after 23h15m16s.
+    at classifyGoogleError (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270063:18)
+    at retryWithBackoff (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270707:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293631:28)
+    at async GeminiChat.streamWithRetries (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293450:29)
+    at async Turn.run (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:294024:24)
+    at async GeminiClient.processTurn (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306709:22)
+    at async GeminiClient.sendMessageStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306797:14)
+    at async file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:10859:26
+    at async main (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:16137:5) {
+  cause: {
+    code: 429,
+    message: 'You have exhausted your capacity on this model. Your quota will reset after 23h15m16s.',
+    details: [ [Object], [Object] ]
+  },
+  retryDelayMs: 83716365.378317,
+  reason: 'QUOTA_EXHAUSTED'
+}
+An unexpected critical error occurred:[object Object]
+[2026-05-17 23:38:27] [sentence-simplifier] Gemini エラー (RC=1)、3分待機...
+[2026-05-17 23:41:27] [sentence-simplifier Loop 25] 残 16 タスク (yolo)...
+YOLO mode is enabled. All tool calls will be automatically approved.
+YOLO mode is enabled. All tool calls will be automatically approved.
+Ripgrep is not available. Falling back to GrepTool.
+Error when talking to Gemini API Full report available at: /var/folders/6c/r5_hcs5n34n_t464tkqbqs200000gn/T/gemini-client-error-Turn.run-sendMessageStream-2026-05-17T14-41-35-602Z.json TerminalQuotaError: You have exhausted your capacity on this model. Your quota will reset after 23h12m8s.
+    at classifyGoogleError (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270063:18)
+    at retryWithBackoff (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:270707:31)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async GeminiChat.makeApiCallAndProcessStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293631:28)
+    at async GeminiChat.streamWithRetries (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:293450:29)
+    at async Turn.run (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:294024:24)
+    at async GeminiClient.processTurn (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306709:22)
+    at async GeminiClient.sendMessageStream (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/chunk-7VVHSNDQ.js:306797:14)
+    at async file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:10859:26
+    at async main (file:///opt/homebrew/lib/node_modules/@google/gemini-cli/bundle/gemini-QSTQ2DBG.js:16137:5) {
+  cause: {
+    code: 429,
+    message: 'You have exhausted your capacity on this model. Your quota will reset after 23h12m8s.',
+    details: [ [Object], [Object] ]
+  },
+  retryDelayMs: 83528444.63171901,
+  reason: 'QUOTA_EXHAUSTED'
+}
+An unexpected critical error occurred:[object Object]
+[2026-05-17 23:41:35] [sentence-simplifier] Gemini エラー (RC=1)、3分待機...

@@ -1,32 +1,53 @@
 import { storage } from './storage';
 import { addFurigana, containsKanji } from './furigana';
+import { simplifyText, hasSimplifiableWord } from './simplifier';
 
 let observer: MutationObserver | null = null;
+let furiganaActive = false;
+let kanjiReplaceActive = false;
 
 /**
- * Processes a single text node by wrapping it in a span if it contains kanji
- * and replacing it with the furigana-enhanced HTML.
+ * Processes a single text node, applying kanji-replace and/or furigana-auto
+ * based on the active feature flags. Replacement runs before furigana so that
+ * any remaining kanji in the substituted phrase still gets ruby annotations.
  */
 function processTextNode(node: Text) {
   const text = node.nodeValue;
-  if (!text || !containsKanji(text)) return;
+  if (!text) return;
 
   const parent = node.parentNode;
   if (!parent) return;
 
-  // Avoid processing already processed nodes or special tags
   const tagName = (parent as HTMLElement).tagName?.toUpperCase();
   if (tagName === 'RUBY' || tagName === 'RT' || tagName === 'RP' || tagName === 'SCRIPT' || tagName === 'STYLE' || tagName === 'TEXTAREA') {
     return;
   }
 
-  const enhancedHtml = addFurigana(text);
-  if (enhancedHtml === text) return;
+  let working = text;
+  let changed = false;
+
+  if (kanjiReplaceActive && hasSimplifiableWord(working)) {
+    const simplified = simplifyText(working);
+    if (simplified !== working) {
+      working = simplified;
+      changed = true;
+    }
+  }
+
+  if (furiganaActive && containsKanji(working)) {
+    const enhanced = addFurigana(working);
+    if (enhanced !== working) {
+      working = enhanced;
+      changed = true;
+    }
+  }
+
+  if (!changed) return;
 
   const span = document.createElement('span');
-  span.setAttribute('data-ss-furigana', 'true');
-  span.innerHTML = enhancedHtml;
-  
+  span.setAttribute('data-ss-processed', 'true');
+  span.innerHTML = working;
+
   parent.replaceChild(span, node);
 }
 
@@ -79,20 +100,25 @@ function stopObserving() {
  * Main initialization function.
  */
 async function init() {
-  const { enabled, furiganaEnabled } = await storage.get(['enabled', 'furiganaEnabled']);
-  
-  if (enabled && furiganaEnabled) {
+  const { enabled, furiganaEnabled, kanjiReplaceEnabled } = await storage.get([
+    'enabled',
+    'furiganaEnabled',
+    'kanjiReplaceEnabled',
+  ]);
+
+  furiganaActive = !!(enabled && furiganaEnabled);
+  kanjiReplaceActive = !!(enabled && kanjiReplaceEnabled);
+
+  if (furiganaActive || kanjiReplaceActive) {
     walk(document.body);
     startObserving();
+  } else {
+    stopObserving();
   }
 }
 
-// Watch for storage changes to enable/disable on the fly
 chrome.storage.onChanged.addListener((changes) => {
-  if (changes.enabled || changes.furiganaEnabled) {
-    // For simplicity, we just reload the page or re-evaluate. 
-    // In a more complex implementation, we might want to "un-apply" the changes.
-    // For now, let's just re-init if enabled, but we don't have an easy "undo".
+  if (changes.enabled || changes.furiganaEnabled || changes.kanjiReplaceEnabled) {
     init();
   }
 });

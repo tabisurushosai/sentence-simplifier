@@ -24,7 +24,7 @@
 - [x] T017: furigana-auto — 実装
 - [x] T018: furigana-auto — テスト・整合
 - [x] T019: kanji-replace — 設計
-- [ ] T020: kanji-replace — 実装
+- [x] T020: kanji-replace — 実装
 - [ ] T021: kanji-replace — テスト・整合
 - [ ] T022: long-split — 設計
 - [ ] T023: long-split — 実装
