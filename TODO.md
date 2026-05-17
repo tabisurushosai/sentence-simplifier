@@ -21,7 +21,7 @@
 
 ## Phase 3: コア機能実装 (T016-T030 = 15タスク、上の features 5個を3タスクずつ分解)
 - [x] T016: furigana-auto — 設計
-- [ ] T017: furigana-auto — 実装
+- [x] T017: furigana-auto — 実装
 - [ ] T018: furigana-auto — テスト・整合
 - [ ] T019: kanji-replace — 設計
 - [ ] T020: kanji-replace — 実装
