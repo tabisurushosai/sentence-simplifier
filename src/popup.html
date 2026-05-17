@@ -2,10 +2,28 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Popup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="popup_title">やさしい文章</title>
+  <link rel="stylesheet" href="./popup.css">
 </head>
 <body>
-  <div id="app"></div>
+  <div class="container">
+    <header>
+      <h1 data-i18n="popup_title">やさしい文章</h1>
+    </header>
+    <main>
+      <div class="toggle-container">
+        <span data-i18n="popup_toggle_label">有効にする</span>
+        <label class="switch">
+          <input type="checkbox" id="toggle-simplifier">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </main>
+    <footer>
+      <button id="open-settings" data-i18n="popup_settings">設定</button>
+    </footer>
+  </div>
   <script type="module" src="./popup.ts"></script>
 </body>
 </html>
