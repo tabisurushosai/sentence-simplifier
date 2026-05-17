@@ -1,6 +1,7 @@
 import { applyI18n, t } from './i18n';
 import { storage } from './storage';
 import { addHostToDisabled, removeHostFromDisabled } from './toggle';
+import { getPremiumStatus, type PremiumStatus } from './premium';
 import type { ReadabilityResult, ReadabilityLevel } from './readability';
 
 const LEVEL_I18N: Record<ReadabilityLevel, string> = {
@@ -32,7 +33,44 @@ function requestReadability(): Promise<ReadabilityResult | null> {
   });
 }
 
-function renderReadability(result: ReadabilityResult | null, isPremium: boolean) {
+function renderPremiumStatus(status: PremiumStatus) {
+  const container = document.getElementById('premium-status');
+  const badge = document.getElementById('premium-badge');
+  const remaining = document.getElementById('premium-trial-remaining');
+  const upgradeBtn = document.getElementById('upgrade-button');
+  if (!container || !badge) return;
+
+  container.hidden = false;
+  badge.classList.remove('is-premium', 'is-trial');
+
+  if (status.isPremium) {
+    badge.textContent = t('premium_badge_premium') || 'Premium';
+    badge.classList.add('is-premium');
+    if (remaining) remaining.hidden = true;
+    if (upgradeBtn) upgradeBtn.hidden = true;
+    return;
+  }
+
+  if (status.isTrial) {
+    badge.textContent = t('premium_badge_trial') || 'Trial';
+    badge.classList.add('is-trial');
+    if (remaining) {
+      const msg =
+        t('premium_trial_remaining', [String(status.trialDaysRemaining)]) ||
+        `${status.trialDaysRemaining}d`;
+      remaining.textContent = msg;
+      remaining.hidden = false;
+    }
+    if (upgradeBtn) upgradeBtn.hidden = false;
+    return;
+  }
+
+  badge.textContent = t('premium_badge_free') || 'Free';
+  if (remaining) remaining.hidden = true;
+  if (upgradeBtn) upgradeBtn.hidden = false;
+}
+
+function renderReadability(result: ReadabilityResult | null, hasAccess: boolean) {
   const section = document.getElementById('readability-section');
   const fill = document.getElementById('readability-fill');
   const scoreEl = document.getElementById('readability-score');
@@ -60,7 +98,7 @@ function renderReadability(result: ReadabilityResult | null, isPremium: boolean)
 
   if (!detailsToggle || !details) return;
 
-  if (isPremium) {
+  if (hasAccess) {
     detailsToggle.hidden = false;
     if (premiumHint) premiumHint.hidden = true;
     const kanjiEl = document.getElementById('readability-kanji');
@@ -124,11 +162,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const siteToggleLabel = document.getElementById('site-toggle-label');
   const openSettings = document.getElementById('open-settings') as HTMLButtonElement;
 
-  const { enabled, premium_unlocked, disabledHosts } = await storage.get([
+  const { enabled, disabledHosts } = await storage.get([
     'enabled',
-    'premium_unlocked',
     'disabledHosts',
   ]);
+  const premiumStatus = await getPremiumStatus();
+  renderPremiumStatus(premiumStatus);
   const host = await getActiveTabHost();
   const hosts: string[] = Array.isArray(disabledHosts) ? disabledHosts : [];
 
@@ -172,6 +211,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
+  const upgradeButton = document.getElementById('upgrade-button') as HTMLButtonElement | null;
+  if (upgradeButton) {
+    upgradeButton.addEventListener('click', () => {
+      chrome.runtime.sendMessage({ type: 'openUpgrade' });
+    });
+  }
+
   const result = await requestReadability();
-  renderReadability(result, !!premium_unlocked);
+  renderReadability(result, premiumStatus.hasAccess);
 });

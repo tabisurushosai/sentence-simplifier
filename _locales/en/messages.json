@@ -67,5 +67,29 @@
   },
   "readability_premium_hint": {
     "message": "Details available in Premium."
+  },
+  "premium_badge_premium": {
+    "message": "Premium"
+  },
+  "premium_badge_trial": {
+    "message": "Free trial"
+  },
+  "premium_badge_free": {
+    "message": "Free"
+  },
+  "premium_trial_remaining": {
+    "message": "$DAYS$ day(s) left",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "premium_upgrade_cta": {
+    "message": "Upgrade to Premium"
+  },
+  "premium_locked_hint": {
+    "message": "Your trial has ended. Premium unlocks the detailed stats."
   }
 }

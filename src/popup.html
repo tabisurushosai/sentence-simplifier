@@ -10,6 +10,10 @@
   <div class="container">
     <header>
       <h1 data-i18n="popup_title">やさしい文章</h1>
+      <div class="premium-status" id="premium-status" hidden>
+        <span class="premium-badge" id="premium-badge"></span>
+        <span class="premium-trial-remaining" id="premium-trial-remaining" hidden></span>
+      </div>
     </header>
     <main>
       <div class="toggle-container">
@@ -54,6 +58,8 @@
     </main>
     <footer>
       <button id="open-settings" data-i18n="popup_settings">設定</button>
+      <button id="upgrade-button" class="upgrade-button" hidden
+              data-i18n="premium_upgrade_cta">Premiumにアップグレード</button>
     </footer>
   </div>
   <script type="module" src="./popup.ts"></script>

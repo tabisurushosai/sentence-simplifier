@@ -38,6 +38,39 @@ header h1 {
   text-align: center;
 }
 
+.premium-status {
+  margin-top: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+}
+
+.premium-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.premium-badge.is-premium {
+  background-color: #b88a2a;
+  color: #ffffff;
+}
+
+.premium-badge.is-trial {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.premium-trial-remaining {
+  opacity: 0.8;
+}
+
 .toggle-container {
   display: flex;
   justify-content: space-between;
@@ -221,8 +254,10 @@ input:checked + .slider:before {
 footer {
   display: flex;
   justify-content: center;
+  gap: 8px;
   border-top: 1px solid var(--border-color);
   padding-top: 12px;
+  flex-wrap: wrap;
 }
 
 #open-settings {
@@ -237,4 +272,20 @@ footer {
 
 #open-settings:hover {
   background-color: var(--secondary-bg);
+}
+
+.upgrade-button {
+  background-color: #b88a2a;
+  border: 1px solid #b88a2a;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.upgrade-button:hover {
+  background-color: #a07720;
+  border-color: #a07720;
 }

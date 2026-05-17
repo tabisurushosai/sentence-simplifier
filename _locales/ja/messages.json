@@ -67,5 +67,29 @@
   },
   "readability_premium_hint": {
     "message": "詳細はPremiumで確認できます。"
+  },
+  "premium_badge_premium": {
+    "message": "Premium"
+  },
+  "premium_badge_trial": {
+    "message": "無料体験"
+  },
+  "premium_badge_free": {
+    "message": "無料版"
+  },
+  "premium_trial_remaining": {
+    "message": "あと$DAYS$日",
+    "placeholders": {
+      "days": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "premium_upgrade_cta": {
+    "message": "Premiumにアップグレード"
+  },
+  "premium_locked_hint": {
+    "message": "体験期間が終了しました。Premiumで詳細統計をご利用いただけます。"
   }
 }
