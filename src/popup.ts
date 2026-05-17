@@ -79,20 +79,91 @@ function renderReadability(result: ReadabilityResult | null, isPremium: boolean)
   }
 }
 
+function getActiveTabHost(): Promise<string | null> {
+  return new Promise((resolve) => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const url = tabs[0]?.url;
+      if (!url) {
+        resolve(null);
+        return;
+      }
+      try {
+        const { hostname, protocol } = new URL(url);
+        if (!hostname || !/^https?:$/.test(protocol)) {
+          resolve(null);
+          return;
+        }
+        resolve(hostname);
+      } catch {
+        resolve(null);
+      }
+    });
+  });
+}
+
+function applySiteToggleEnabledState(
+  siteToggle: HTMLInputElement | null,
+  siteLabel: HTMLElement | null,
+  masterEnabled: boolean,
+  hostAvailable: boolean
+) {
+  if (!siteToggle) return;
+  const enabled = masterEnabled && hostAvailable;
+  siteToggle.disabled = !enabled;
+  if (siteLabel) {
+    siteLabel.classList.toggle('disabled', !enabled);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   applyI18n();
 
   const toggleSimplifier = document.getElementById('toggle-simplifier') as HTMLInputElement;
+  const toggleSiteDisabled = document.getElementById('toggle-site-disabled') as HTMLInputElement | null;
+  const siteToggleLabel = document.getElementById('site-toggle-label');
   const openSettings = document.getElementById('open-settings') as HTMLButtonElement;
 
-  const { enabled, premium_unlocked } = await storage.get(['enabled', 'premium_unlocked']);
+  const { enabled, premium_unlocked, disabledHosts } = await storage.get([
+    'enabled',
+    'premium_unlocked',
+    'disabledHosts',
+  ]);
+  const host = await getActiveTabHost();
+  const hosts: string[] = Array.isArray(disabledHosts) ? disabledHosts : [];
+
   if (toggleSimplifier) {
     toggleSimplifier.checked = enabled;
   }
+  if (toggleSiteDisabled) {
+    toggleSiteDisabled.checked = !!(host && hosts.includes(host));
+  }
+  applySiteToggleEnabledState(toggleSiteDisabled, siteToggleLabel, enabled, !!host);
 
   if (toggleSimplifier) {
     toggleSimplifier.addEventListener('change', async () => {
       await storage.set({ enabled: toggleSimplifier.checked });
+      applySiteToggleEnabledState(
+        toggleSiteDisabled,
+        siteToggleLabel,
+        toggleSimplifier.checked,
+        !!host
+      );
+    });
+  }
+
+  if (toggleSiteDisabled && host) {
+    toggleSiteDisabled.addEventListener('change', async () => {
+      const current = await storage.get(['disabledHosts']);
+      const list: string[] = Array.isArray(current.disabledHosts)
+        ? [...current.disabledHosts]
+        : [];
+      const idx = list.indexOf(host);
+      if (toggleSiteDisabled.checked) {
+        if (idx === -1) list.push(host);
+      } else {
+        if (idx !== -1) list.splice(idx, 1);
+      }
+      await storage.set({ disabledHosts: list });
     });
   }
 

@@ -103,6 +103,32 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.site-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background-color: var(--secondary-bg);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.site-toggle input[type="checkbox"] {
+  margin: 0;
+  cursor: pointer;
+}
+
+.site-toggle.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.site-toggle.disabled input[type="checkbox"] {
+  cursor: not-allowed;
+}
+
 .readability {
   background-color: var(--secondary-bg);
   border-radius: 8px;

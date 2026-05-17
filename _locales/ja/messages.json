@@ -11,6 +11,9 @@
   "popup_toggle_label": {
     "message": "有効にする"
   },
+  "popup_disable_on_site": {
+    "message": "このサイトでは無効にする"
+  },
   "popup_settings": {
     "message": "設定"
   },

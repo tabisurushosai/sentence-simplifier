@@ -11,6 +11,9 @@
   "popup_toggle_label": {
     "message": "Enable"
   },
+  "popup_disable_on_site": {
+    "message": "Disable on this site"
+  },
   "popup_settings": {
     "message": "Settings"
   },

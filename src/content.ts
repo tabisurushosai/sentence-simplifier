@@ -153,17 +153,27 @@ function stopObserving() {
  * Main initialization function.
  */
 async function init() {
-  const { enabled, furiganaEnabled, kanjiReplaceEnabled, longSplitEnabled } =
-    await storage.get([
-      'enabled',
-      'furiganaEnabled',
-      'kanjiReplaceEnabled',
-      'longSplitEnabled',
-    ]);
+  const {
+    enabled,
+    furiganaEnabled,
+    kanjiReplaceEnabled,
+    longSplitEnabled,
+    disabledHosts,
+  } = await storage.get([
+    'enabled',
+    'furiganaEnabled',
+    'kanjiReplaceEnabled',
+    'longSplitEnabled',
+    'disabledHosts',
+  ]);
 
-  furiganaActive = !!(enabled && furiganaEnabled);
-  kanjiReplaceActive = !!(enabled && kanjiReplaceEnabled);
-  longSplitActive = !!(enabled && longSplitEnabled);
+  const host = location.hostname;
+  const siteDisabled = Array.isArray(disabledHosts) && disabledHosts.includes(host);
+  const masterOn = !!enabled && !siteDisabled;
+
+  furiganaActive = masterOn && !!furiganaEnabled;
+  kanjiReplaceActive = masterOn && !!kanjiReplaceEnabled;
+  longSplitActive = masterOn && !!longSplitEnabled;
 
   if (furiganaActive || kanjiReplaceActive || longSplitActive) {
     walk(document.body);
@@ -187,7 +197,8 @@ chrome.storage.onChanged.addListener((changes) => {
     changes.enabled ||
     changes.furiganaEnabled ||
     changes.kanjiReplaceEnabled ||
-    changes.longSplitEnabled
+    changes.longSplitEnabled ||
+    changes.disabledHosts
   ) {
     init();
   }

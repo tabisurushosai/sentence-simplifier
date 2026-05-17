@@ -33,7 +33,7 @@
 - [x] T026: readability-score — 実装
 - [x] T027: readability-score — テスト・整合
 - [x] T028: toggle — 設計
-- [ ] T029: toggle — 実装
+- [x] T029: toggle — 実装
 - [ ] T030: toggle — テスト・整合
 
 ## Phase 4: Premium ゲート (T031-T033)

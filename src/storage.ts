@@ -8,6 +8,7 @@ export interface StorageData {
   kanjiReplaceEnabled: boolean;
   longSplitEnabled: boolean;
   readabilityScoreEnabled: boolean;
+  disabledHosts: string[];
   trial_start_ts?: number;
   premium_unlocked: boolean;
 }
@@ -18,6 +19,7 @@ const DEFAULT_STORAGE: StorageData = {
   kanjiReplaceEnabled: true,
   longSplitEnabled: true,
   readabilityScoreEnabled: true,
+  disabledHosts: [],
   premium_unlocked: false,
 };
 
