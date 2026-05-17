@@ -1,6 +1,7 @@
-import { applyI18n, getMessage } from './i18n';
+import { applyI18n, t } from './i18n';
+import { storage } from './storage';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // Apply internationalization
   applyI18n();
 
@@ -12,37 +13,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const status = document.getElementById('status') as HTMLDivElement;
 
   // Load saved settings
-  chrome.storage.local.get(
-    {
-      furiganaEnabled: true,
-      kanjiReplaceEnabled: true,
-      longSplitEnabled: true,
-      readabilityScoreEnabled: true,
-    },
-    (items) => {
-      furiganaToggle.checked = items.furiganaEnabled;
-      kanjiToggle.checked = items.kanjiReplaceEnabled;
-      splitToggle.checked = items.longSplitEnabled;
-      scoreToggle.checked = items.readabilityScoreEnabled;
-    }
-  );
+  const settings = await storage.get([
+    'furiganaEnabled',
+    'kanjiReplaceEnabled',
+    'longSplitEnabled',
+    'readabilityScoreEnabled',
+  ]);
+
+  furiganaToggle.checked = settings.furiganaEnabled;
+  kanjiToggle.checked = settings.kanjiReplaceEnabled;
+  splitToggle.checked = settings.longSplitEnabled;
+  scoreToggle.checked = settings.readabilityScoreEnabled;
 
   // Save settings
-  saveButton.addEventListener('click', () => {
-    chrome.storage.local.set(
-      {
-        furiganaEnabled: furiganaToggle.checked,
-        kanjiReplaceEnabled: kanjiToggle.checked,
-        longSplitEnabled: splitToggle.checked,
-        readabilityScoreEnabled: scoreToggle.checked,
-      },
-      () => {
-        // Update status to let user know options were saved.
-        status.textContent = getMessage('options_saved_success');
-        setTimeout(() => {
-          status.textContent = '';
-        }, 750);
-      }
-    );
+  saveButton.addEventListener('click', async () => {
+    await storage.set({
+      furiganaEnabled: furiganaToggle.checked,
+      kanjiReplaceEnabled: kanjiToggle.checked,
+      longSplitEnabled: splitToggle.checked,
+      readabilityScoreEnabled: scoreToggle.checked,
+    });
+
+    // Update status to let user know options were saved.
+    status.textContent = t('options_saved_success');
+    setTimeout(() => {
+      status.textContent = '';
+    }, 750);
   });
 });

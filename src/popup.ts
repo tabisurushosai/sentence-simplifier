@@ -1,6 +1,7 @@
 import { applyI18n } from './i18n';
+import { storage } from './storage';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // Apply internationalization
   applyI18n();
 
@@ -8,16 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const openSettings = document.getElementById('open-settings') as HTMLButtonElement;
 
   // Load initial state
-  chrome.storage.local.get(['enabled'], (result) => {
-    if (toggleSimplifier) {
-      toggleSimplifier.checked = result.enabled ?? true;
-    }
-  });
+  const { enabled } = await storage.get(['enabled']);
+  if (toggleSimplifier) {
+    toggleSimplifier.checked = enabled;
+  }
 
   // Event listeners
   if (toggleSimplifier) {
-    toggleSimplifier.addEventListener('change', () => {
-      chrome.storage.local.set({ enabled: toggleSimplifier.checked });
+    toggleSimplifier.addEventListener('change', async () => {
+      await storage.set({ enabled: toggleSimplifier.checked });
     });
   }
 
