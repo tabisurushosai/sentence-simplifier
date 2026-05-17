@@ -1,0 +1,23 @@
+{
+  "appName": {
+    "message": "Sentence Simplifier"
+  },
+  "appDesc": {
+    "message": "Converts complex Japanese sentences into simpler forms with furigana."
+  },
+  "popup_title": {
+    "message": "Sentence Simplifier"
+  },
+  "popup_toggle_label": {
+    "message": "Enable"
+  },
+  "popup_settings": {
+    "message": "Settings"
+  },
+  "options_title": {
+    "message": "Sentence Simplifier - Settings"
+  },
+  "options_save": {
+    "message": "Save"
+  }
+}
