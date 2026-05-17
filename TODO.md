@@ -27,7 +27,7 @@
 - [x] T020: kanji-replace — 実装
 - [x] T021: kanji-replace — テスト・整合
 - [x] T022: long-split — 設計
-- [ ] T023: long-split — 実装
+- [x] T023: long-split — 実装
 - [ ] T024: long-split — テスト・整合
 - [ ] T025: readability-score — 設計
 - [ ] T026: readability-score — 実装
