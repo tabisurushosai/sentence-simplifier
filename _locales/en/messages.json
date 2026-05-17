@@ -19,5 +19,20 @@
   },
   "options_save": {
     "message": "Save"
+  },
+  "options_feature_furigana": {
+    "message": "Enable automatic furigana"
+  },
+  "options_feature_kanji": {
+    "message": "Convert complex kanji/compounds to simpler words"
+  },
+  "options_feature_split": {
+    "message": "Split long sentences"
+  },
+  "options_feature_score": {
+    "message": "Show readability score"
+  },
+  "options_saved_success": {
+    "message": "Settings saved"
   }
 }

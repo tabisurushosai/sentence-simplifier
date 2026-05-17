@@ -19,5 +19,20 @@
   },
   "options_save": {
     "message": "保存"
+  },
+  "options_feature_furigana": {
+    "message": "ふりがなを自動で振る"
+  },
+  "options_feature_kanji": {
+    "message": "難しい熟語を平易な言葉に変換する"
+  },
+  "options_feature_split": {
+    "message": "長い文章を分割する"
+  },
+  "options_feature_score": {
+    "message": "読みやすさスコアを表示する"
+  },
+  "options_saved_success": {
+    "message": "設定を保存しました"
   }
 }

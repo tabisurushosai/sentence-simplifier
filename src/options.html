@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="options_title">やさしい文章 - 設定</title>
+  <link rel="stylesheet" href="./popup.css">
+  <style>
+    body {
+      width: 400px;
+      padding: 20px;
+    }
+    .setting-item {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .setting-label {
+      flex: 1;
+      margin-right: 10px;
+    }
+    #status {
+      margin-top: 10px;
+      color: green;
+      height: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 data-i18n="options_title">やさしい文章 - 設定</h1>
+    </header>
+    <main>
+      <div class="setting-item">
+        <span class="setting-label" data-i18n="options_feature_furigana">ふりがなを自動で振る</span>
+        <label class="switch">
+          <input type="checkbox" id="feature-furigana">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <span class="setting-label" data-i18n="options_feature_kanji">難しい熟語を平易な言葉に変換する</span>
+        <label class="switch">
+          <input type="checkbox" id="feature-kanji">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <span class="setting-label" data-i18n="options_feature_split">長い文章を分割する</span>
+        <label class="switch">
+          <input type="checkbox" id="feature-split">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <span class="setting-label" data-i18n="options_feature_score">読みやすさスコアを表示する</span>
+        <label class="switch">
+          <input type="checkbox" id="feature-score">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </main>
+    <footer>
+      <button id="save" data-i18n="options_save">保存</button>
+      <div id="status"></div>
+    </footer>
+  </div>
+  <script type="module" src="./options.ts"></script>
+</body>
+</html>
