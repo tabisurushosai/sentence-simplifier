@@ -32,7 +32,7 @@
 - [x] T025: readability-score — 設計
 - [x] T026: readability-score — 実装
 - [x] T027: readability-score — テスト・整合
-- [ ] T028: toggle — 設計
+- [x] T028: toggle — 設計
 - [ ] T029: toggle — 実装
 - [ ] T030: toggle — テスト・整合
 
